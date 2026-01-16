@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="zh-TW" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>溫柔療癒空間</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&amp;family=Zen+Maru+Gothic:wght@300;400;500&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    .font-serif-tc {
+      font-family: 'Noto Serif TC', serif;
+    }
+    
+    .font-zen {
+      font-family: 'Zen Maru Gothic', sans-serif;
+    }
+    
+    .tab-active {
+      background: linear-gradient(135deg, #E8E0F0 0%, #F0E8F4 100%);
+      color: #6B5B7A;
+      border-bottom: 2px solid #B8A9C9;
+    }
+    
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(184, 169, 201, 0.15);
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .flower-decoration {
+      position: absolute;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+    
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    
+    .price-tag {
+      background: linear-gradient(135deg, #F8F5FB 0%, #FFFFFF 100%);
+    }
+    
+    .gentle-border {
+      border: 1px solid rgba(184, 169, 201, 0.3);
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-zen bg-gradient-to-b from-[#FDFBFE] via-[#F9F5FC] to-[#F5F0F8] text-[#5A4A6A] overflow-auto">
+  <div class="h-full w-full flex flex-col relative overflow-hidden"><!-- Decorative Elements -->
+   <svg class="flower-decoration top-10 left-5 w-32 h-32" viewbox="0 0 100 100"><circle cx="50" cy="30" r="12" fill="#D4C6E0" /> <circle cx="35" cy="45" r="12" fill="#E0D4EC" /> <circle cx="65" cy="45" r="12" fill="#E0D4EC" /> <circle cx="40" cy="65" r="12" fill="#D4C6E0" /> <circle cx="60" cy="65" r="12" fill="#D4C6E0" /> <circle cx="50" cy="50" r="8" fill="#C9B8D9" />
+   </svg>
+   <svg class="flower-decoration bottom-20 right-5 w-40 h-40" viewbox="0 0 100 100"><ellipse cx="50" cy="25" rx="15" ry="20" fill="#D4C6E0" transform="rotate(0 50 50)" /> <ellipse cx="50" cy="25" rx="15" ry="20" fill="#E0D4EC" transform="rotate(72 50 50)" /> <ellipse cx="50" cy="25" rx="15" ry="20" fill="#D4C6E0" transform="rotate(144 50 50)" /> <ellipse cx="50" cy="25" rx="15" ry="20" fill="#E0D4EC" transform="rotate(216 50 50)" /> <ellipse cx="50" cy="25" rx="15" ry="20" fill="#D4C6E0" transform="rotate(288 50 50)" /> <circle cx="50" cy="50" r="10" fill="#C9B8D9" />
+   </svg><!-- Header -->
+   <header class="text-center py-8 px-4 relative z-10">
+    <div class="inline-block mb-3">
+     <svg class="w-12 h-12 mx-auto" viewbox="0 0 50 50"><circle cx="25" cy="15" r="6" fill="#C9B8D9" opacity="0.8" /> <circle cx="17" cy="22" r="6" fill="#D4C6E0" opacity="0.8" /> <circle cx="33" cy="22" r="6" fill="#D4C6E0" opacity="0.8" /> <circle cx="19" cy="32" r="6" fill="#C9B8D9" opacity="0.8" /> <circle cx="31" cy="32" r="6" fill="#C9B8D9" opacity="0.8" /> <circle cx="25" cy="25" r="4" fill="#B8A9C9" />
+     </svg>
+    </div>
+    <h1 id="brand-name" class="font-serif-tc text-2xl md:text-3xl font-medium text-[#6B5B7A] tracking-wider mb-2">溫柔療癒空間</h1>
+    <p id="tagline" class="text-sm text-[#8B7A9A] tracking-wide">在這個溫柔療癒空間，邀請你像一朵慢慢綻放的花，把步調放慢</p>
+   </header><!-- Tab Navigation -->
+   <nav class="px-4 mb-6 relative z-10">
+    <div class="flex overflow-x-auto scrollbar-hide gap-2 pb-2 justify-start md:justify-center"><button onclick="switchTab('courses')" id="tab-courses" class="tab-btn tab-active whitespace-nowrap px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 gentle-border bg-white/50"> 項目與價目表 </button> <button onclick="switchTab('booking')" id="tab-booking" class="tab-btn whitespace-nowrap px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 gentle-border bg-white/50 text-[#8B7A9A] hover:bg-[#F5EFF8]"> 預約須知 </button> <button onclick="switchTab('faq')" id="tab-faq" class="tab-btn whitespace-nowrap px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 gentle-border bg-white/50 text-[#8B7A9A] hover:bg-[#F5EFF8]"> 常見問題 Q&amp;A </button> <button onclick="switchTab('aftercare')" id="tab-aftercare" class="tab-btn whitespace-nowrap px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 gentle-border bg-white/50 text-[#8B7A9A] hover:bg-[#F5EFF8]"> 調理後照顧建議 </button> <button onclick="switchTab('preparation')" id="tab-preparation" class="tab-btn whitespace-nowrap px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 gentle-border bg-white/50 text-[#8B7A9A] hover:bg-[#F5EFF8]"> 開始前準備 </button>
+    </div>
+   </nav><!-- Content Area -->
+   <main class="flex-1 overflow-y-auto px-4 pb-32 relative z-10"><!-- Courses & Pricing -->
+    <section id="content-courses" class="content-section max-w-2xl mx-auto space-y-6 fade-in">
+     <div class="text-center mb-8">
+      <p class="text-[#8B7A9A] text-sm leading-relaxed">一段為身體而生的溫柔時光<br>
+       沒有匆忙，只有慢慢回到自己</p>
+     </div><!-- 經絡油壓 -->
+     <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-6 gentle-border card-hover">
+      <div class="flex items-center gap-3 mb-4">
+       <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#E8E0F0] to-[#D4C6E0] flex items-center justify-center">
+        <svg class="w-5 h-5 text-[#7A6A8A]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+       </div>
+       <div>
+        <h3 class="font-serif-tc text-lg font-medium text-[#6B5B7A]">經絡油壓</h3>
+        <p class="text-xs text-[#9A8AAA]">深層放鬆・循環調理</p>
+       </div>
+      </div>
+      <p class="text-sm text-[#7A6A8A] leading-relaxed mb-5">透過溫熱手法順著經絡走向，協助身體釋放長期累積的疲勞與緊繃，讓氣血慢慢流動起來。</p>
+      <div class="space-y-2.5">
+       <div class="price-tag rounded-2xl px-4 py-3 flex justify-between items-center"><span class="text-sm text-[#6B5B7A]">單次 60 分鐘</span> <span class="font-medium text-[#7A6A8A]">$1,500</span>
+       </div>
+       <div class="price-tag rounded-2xl px-4 py-3 flex justify-between items-center"><span class="text-sm text-[#6B5B7A]">3 堂方案</span> <span class="font-medium text-[#7A6A8A]">$3,980</span>
+       </div>
+       <div class="price-tag rounded-2xl px-4 py-3 flex justify-between items-center"><span class="text-sm text-[#6B5B7A]">5 堂方案</span> <span class="font-medium text-[#7A6A8A]">$6,250</span>
+       </div>
+       <div class="price-tag rounded-2xl px-4 py-3 flex justify-between items-center"><span class="text-sm text-[#6B5B7A]">8 堂方案</span> <span class="font-medium text-[#7A6A8A]">$9,250</span>
+       </div>
+      </div>
+      <div class="mt-5 pt-4 border-t border-[#E8E0F0]">
+       <div class="flex items-center gap-2 mb-2"><span class="text-xs bg-[#E8E0F0] text-[#7A6A8A] px-2 py-1 rounded-full">加購服務</span> <span class="text-sm font-medium text-[#6B5B7A]">筋膜刀放鬆</span>
+       </div>
+       <p class="text-xs text-[#9A8AAA] mb-2">協助深層筋膜釋放，特別適合久坐、久站或運動後的緊繃感。</p><span class="text-sm text-[#7A6A8A]">單次加購 +$200</span>
+      </div>
+     </div><!-- 體驗課 -->
+     <div class="bg-gradient-to-br from-[#F5EFF8] to-white rounded-3xl p-6 gentle-border card-hover">
+      <div class="flex items-center gap-3 mb-4">
+       <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#D4C6E0] to-[#C9B8D9] flex items-center justify-center">
+        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" />
+        </svg>
+       </div>
+       <div>
+        <h3 class="font-serif-tc text-lg font-medium text-[#6B5B7A]">經絡油壓體驗課</h3>
+        <p class="text-xs text-[#9A8AAA]">給第一次認識自己的身體一個溫柔開始</p>
+       </div>
+      </div>
+      <div class="space-y-2.5">
+       <div class="bg-white/80 rounded-2xl px-4 py-3 flex justify-between items-center"><span class="text-sm text-[#6B5B7A]">40 分鐘體驗</span> <span class="font-medium text-[#7A6A8A]">$800</span>
+       </div>
+       <div class="bg-white/80 rounded-2xl px-4 py-3 flex justify-between items-center"><span class="text-sm text-[#6B5B7A]">體驗加筋膜刀</span> <span class="font-medium text-[#7A6A8A]">+$100</span>
+       </div>
+      </div>
+     </div><!-- 美容撥筋 -->
+     <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-6 gentle-border card-hover">
+      <div class="flex items-center gap-3 mb-4">
+       <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#F0E8F4] to-[#E0D4EC] flex items-center justify-center">
+        <svg class="w-5 h-5 text-[#7A6A8A]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        </svg>
+       </div>
+       <div>
+        <h3 class="font-serif-tc text-lg font-medium text-[#6B5B7A]">美容撥筋</h3>
+        <p class="text-xs text-[#9A8AAA]">溫柔雕塑・氣色養護</p>
+       </div>
+      </div>
+      <p class="text-sm text-[#7A6A8A] leading-relaxed mb-5">以細緻手法喚醒臉部循環，放鬆表情肌肉，讓氣色自然透亮。</p>
+      <div class="space-y-2.5">
+       <div class="price-tag rounded-2xl px-4 py-3">
+        <div class="flex justify-between items-center"><span class="text-sm text-[#6B5B7A]">臉部撥筋 60 分鐘</span>
+         <div class="text-right"><span class="text-xs text-[#B8A9C9] line-through mr-2">$1,200</span> <span class="font-medium text-[#7A6A8A]">$1,000</span>
+         </div>
+        </div>
+       </div>
+       <div class="price-tag rounded-2xl px-4 py-3">
+        <div class="flex justify-between items-center"><span class="text-sm text-[#6B5B7A]">頭部撥筋 30 分鐘</span>
+         <div class="text-right"><span class="text-xs text-[#B8A9C9] line-through mr-2">$800</span> <span class="font-medium text-[#7A6A8A]">$600</span>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <p class="text-center text-xs text-[#B8A9C9] pt-4">所有方案皆無推銷壓力，依身體狀態自由選擇</p>
+    </section><!-- Booking Info -->
+    <section id="content-booking" class="content-section max-w-2xl mx-auto space-y-6 hidden">
+     <div class="text-center mb-8">
+      <p class="text-[#8B7A9A] text-sm leading-relaxed">我們珍惜每一段為你保留的療癒時光<br>
+       也希望你能安心安排</p>
+     </div>
+     <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-6 gentle-border card-hover">
+      <div class="flex items-center gap-3 mb-4">
+       <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#E8E0F0] to-[#D4C6E0] flex items-center justify-center">
+        <svg class="w-5 h-5 text-[#7A6A8A]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+       </div>
+       <h3 class="font-serif-tc text-lg font-medium text-[#6B5B7A]">預約方式</h3>
+      </div>
+      <ul class="space-y-3 text-sm text-[#7A6A8A]">
+       <li class="flex items-start gap-2"><span class="text-[#C9B8D9] mt-1">◦</span> <span>請透過 LINE／IG 私訊預約</span></li>
+       <li class="flex items-start gap-2"><span class="text-[#C9B8D9] mt-1">◦</span> <span>預約時請告知想體驗的項目與時間以及工作室</span></li>
+      </ul>
+     </div>
+     <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-6 gentle-border card-hover">
+      <div class="flex items-center gap-3 mb-4">
+       <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#E8E0F0] to-[#D4C6E0] flex items-center justify-center">
+        <svg class="w-5 h-5 text-[#7A6A8A]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+       </div>
+       <h3 class="font-serif-tc text-lg font-medium text-[#6B5B7A]">取消與改期</h3>
+      </div>
+      <ul class="space-y-3 text-sm text-[#7A6A8A]">
+       <li class="flex items-start gap-2"><span class="text-[#C9B8D9] mt-1">◦</span> <span>請於服務前 24 小時告知改期或取消</span></li>
+       <li class="flex items-start gap-2"><span class="text-[#C9B8D9] mt-1">◦</span> <span>若未提前通知，該次服務將視同完成</span></li>
+      </ul>
+     </div>
+     <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-6 gentle-border card-hover">
+      <div class="flex items-center gap-3 mb-4">
+       <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#E8E0F0] to-[#D4C6E0] flex items-center justify-center">
+        <svg class="w-5 h-5 text-[#7A6A8A]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+       </div>
+       <h3 class="font-serif-tc text-lg font-medium text-[#6B5B7A]">可預約工作室地址</h3>
+      </div>
+      <div class="space-y-4">
+       <div class="bg-[#F9F5FC] rounded-2xl p-4">
+        <div class="flex items-start gap-3"><span class="text-[#C9B8D9] text-lg mt-0.5">1</span>
+         <div>
+          <p class="text-sm text-[#7A6A8A] leading-relaxed">高雄市苓雅區輔仁路153號3F</p>
+          <p class="text-xs text-[#9A8AAA] mt-1">（台灣全人適健協會）</p>
+         </div>
+        </div>
+       </div>
+       <div class="bg-[#F9F5FC] rounded-2xl p-4">
+        <div class="flex items-start gap-3"><span class="text-[#C9B8D9] text-lg mt-0.5">2</span>
+         <div>
+          <p class="text-sm text-[#7A6A8A] leading-relaxed">高雄市左營區富國路353巷7號</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-6 gentle-border card-hover">
+      <div class="flex items-center gap-3 mb-4">
+       <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#E8E0F0] to-[#D4C6E0] flex items-center justify-center">
+        <svg class="w-5 h-5 text-[#7A6A8A]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+       </div>
+       <h3 class="font-serif-tc text-lg font-medium text-[#6B5B7A]">預約注意事項</h3>
+      </div>
+      <ul class="space-y-3 text-sm text-[#7A6A8A]">
+       <li class="flex items-start gap-2"><span class="text-[#C9B8D9] mt-1">◦</span> <span>請準時抵達，讓身體有足夠時間慢慢放鬆</span></li>
+       <li class="flex items-start gap-2"><span class="text-[#C9B8D9] mt-1">◦</span> <span>若有特殊身體狀況，請提前告知</span></li>
+      </ul>
+     </div>
+    </section><!-- FAQ -->
+    <section id="content-faq" class="content-section max-w-2xl mx-auto space-y-4 hidden">
+     <div class="text-center mb-8">
+      <p class="text-[#8B7A9A] text-sm leading-relaxed">關於療癒，你可能想知道的事</p>
+     </div>
+     <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-5 gentle-border card-hover">
+      <div class="flex items-start gap-3"><span class="text-[#C9B8D9] font-serif-tc text-lg">Q</span>
+       <div>
+        <p class="font-medium text-[#6B5B7A] mb-2">沒有按摩經驗也可以嗎？</p>
+        <p class="text-sm text-[#8B7A9A] leading-relaxed">可以的，所有服務皆以溫柔節奏進行，會依你的狀態調整力道。</p>
+       </div>
+      </div>
+     </div>
+     <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-5 gentle-border card-hover">
+      <div class="flex items-start gap-3"><span class="text-[#C9B8D9] font-serif-tc text-lg">Q</span>
+       <div>
+        <p class="font-medium text-[#6B5B7A] mb-2">需要準備什麼嗎？</p>
+        <p class="text-sm text-[#8B7A9A] leading-relaxed">不需要特別準備，放鬆的心情就好，其餘交給我們。</p>
+       </div>
+      </div>
+     </div>
+     <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-5 gentle-border card-hover">
+      <div class="flex items-start gap-3"><span class="text-[#C9B8D9] font-serif-tc text-lg">Q</span>
+       <div>
+        <p class="font-medium text-[#6B5B7A] mb-2">會不會很痛？</p>
+        <p class="text-sm text-[#8B7A9A] leading-relaxed">我們相信「有感不等於疼痛」，過程中可隨時調整力道。</p>
+       </div>
+      </div>
+     </div>
+     <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-5 gentle-border card-hover">
+      <div class="flex items-start gap-3"><span class="text-[#C9B8D9] font-serif-tc text-lg">Q</span>
+       <div>
+        <p class="font-medium text-[#6B5B7A] mb-2">多久適合做一次？</p>
+        <p class="text-sm text-[#8B7A9A] leading-relaxed">依個人狀態不同，初期可密集調理，穩定後再拉長間隔。</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Aftercare -->
+    <section id="content-aftercare" class="content-section max-w-2xl mx-auto hidden">
+     <div class="text-center mb-8">
+      <p class="text-[#8B7A9A] text-sm leading-relaxed">療癒不只停留在當下，也延續在生活裡</p>
+     </div>
+     <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-6 gentle-border">
+      <div class="flex items-center gap-3 mb-5">
+       <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#E8E0F0] to-[#D4C6E0] flex items-center justify-center">
+        <svg class="w-5 h-5 text-[#7A6A8A]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+       </div>
+       <h3 class="font-serif-tc text-lg font-medium text-[#6B5B7A]">調理後放鬆與照顧建議</h3>
+      </div>
+      <div class="space-y-4">
+       <div class="flex items-start gap-4 p-4 bg-[#F9F5FC] rounded-2xl">
+        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0"><span class="text-lg">💧</span>
+        </div>
+        <p class="text-sm text-[#7A6A8A] leading-relaxed">多補充溫水，幫助代謝循環</p>
+       </div>
+       <div class="flex items-start gap-4 p-4 bg-[#F9F5FC] rounded-2xl">
+        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0"><span class="text-lg">🌙</span>
+        </div>
+        <p class="text-sm text-[#7A6A8A] leading-relaxed">當天避免過度勞累或熬夜</p>
+       </div>
+       <div class="flex items-start gap-4 p-4 bg-[#F9F5FC] rounded-2xl">
+        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0"><span class="text-lg">🧘</span>
+        </div>
+        <p class="text-sm text-[#7A6A8A] leading-relaxed">給自己一段安靜的時光，感受身體的變化</p>
+       </div>
+       <div class="flex items-start gap-4 p-4 bg-[#F9F5FC] rounded-2xl">
+        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0"><span class="text-lg">🌸</span>
+        </div>
+        <p class="text-sm text-[#7A6A8A] leading-relaxed">若有痠軟感屬正常反應，請溫柔對待自己</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Preparation -->
+    <section id="content-preparation" class="content-section max-w-2xl mx-auto hidden">
+     <div class="text-center mb-8">
+      <p class="text-[#8B7A9A] text-sm leading-relaxed">為了讓這段時光更舒服<br>
+       請留意以下小提醒</p>
+     </div>
+     <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-6 gentle-border">
+      <div class="flex items-center gap-3 mb-5">
+       <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#E8E0F0] to-[#D4C6E0] flex items-center justify-center">
+        <svg class="w-5 h-5 text-[#7A6A8A]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+        </svg>
+       </div>
+       <h3 class="font-serif-tc text-lg font-medium text-[#6B5B7A]">開始前準備與注意事項</h3>
+      </div>
+      <div class="space-y-4">
+       <div class="flex items-start gap-4 p-4 bg-[#F9F5FC] rounded-2xl">
+        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0"><span class="text-lg">👗</span>
+        </div>
+        <p class="text-sm text-[#7A6A8A] leading-relaxed">建議穿著寬鬆、好活動的衣物</p>
+       </div>
+       <div class="flex items-start gap-4 p-4 bg-[#F9F5FC] rounded-2xl">
+        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0"><span class="text-lg">🍵</span>
+        </div>
+        <p class="text-sm text-[#7A6A8A] leading-relaxed">開始前 1 小時避免過飽或空腹</p>
+       </div>
+       <div class="flex items-start gap-4 p-4 bg-[#F9F5FC] rounded-2xl">
+        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0"><span class="text-lg">📋</span>
+        </div>
+        <p class="text-sm text-[#7A6A8A] leading-relaxed">若有懷孕、重大疾病、急性發炎或不適，請先告知或暫緩服務</p>
+       </div>
+       <div class="flex items-start gap-4 p-4 bg-[#F9F5FC] rounded-2xl">
+        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0"><span class="text-lg">💜</span>
+        </div>
+        <p class="text-sm text-[#7A6A8A] leading-relaxed">身體不適時，請相信自己，休息也是一種照顧</p>
+       </div>
+      </div>
+     </div>
+    </section>
+   </main><!-- Fixed Footer -->
+   <footer class="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-[#F9F5FC] via-[#F9F5FC] to-transparent pt-8 pb-6 px-4 z-20">
+    <div class="max-w-md mx-auto">
+     <div class="flex gap-3 mb-4"><button onclick="switchTab('courses')" class="flex-1 py-3 px-4 bg-white rounded-2xl gentle-border text-sm text-[#6B5B7A] font-medium hover:bg-[#F5EFF8] transition-all duration-300 flex items-center justify-center gap-2">
+       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+       </svg> 返回首頁 </button> <button id="contact-btn" onclick="toggleContact()" class="flex-1 py-3 px-4 bg-gradient-to-r from-[#D4C6E0] to-[#C9B8D9] rounded-2xl text-sm text-white font-medium hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-2">
+       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+       </svg> LINE 預約 </button>
+     </div><!-- Contact Popup -->
+     <div id="contact-popup" class="hidden bg-white rounded-2xl gentle-border p-4 mb-4 fade-in">
+      <div class="flex justify-between items-center mb-3"><span class="text-sm font-medium text-[#6B5B7A]">LINE 預約</span> <button onclick="toggleContact()" class="text-[#B8A9C9] hover:text-[#8B7A9A]">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+        </svg></button>
+      </div>
+      <div><a id="line-link" href="https://lin.ee/oG4hNRL" target="_blank" rel="noopener noreferrer" class="block w-full py-3 px-4 bg-[#00B900] rounded-xl text-white text-sm font-medium text-center hover:opacity-90 transition-opacity"> 點擊前往 LINE 預約 </a>
+      </div>
+     </div>
+     <p class="text-center text-xs text-[#B8A9C9] leading-relaxed">在粉蝶花般柔和的空間裡<br>
+       願你慢慢鬆開緊繃，把身體交還給溫柔</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      brand_name: '養序｜やさしく、身體を整える',
+      tagline: '在這個溫柔療癒空間，邀請你像一朵慢慢綻放的花，把步調放慢',
+      ig_handle: '@gentle_healing',
+      line_id: 'gentle_healing',
+      line_url: 'https://lin.ee/oG4hNRL',
+      primary_color: '#C9B8D9',
+      secondary_color: '#F9F5FC',
+      text_color: '#6B5B7A',
+      accent_color: '#E8E0F0',
+      surface_color: '#FFFFFF',
+      font_family: 'Zen Maru Gothic',
+      font_size: 14
+    };
+
+    let config = { ...defaultConfig };
+
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('tab-active');
+        btn.classList.add('text-[#8B7A9A]');
+      });
+      
+      document.getElementById(`tab-${tabName}`).classList.add('tab-active');
+      document.getElementById(`tab-${tabName}`).classList.remove('text-[#8B7A9A]');
+      
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.add('hidden');
+      });
+      
+      const activeSection = document.getElementById(`content-${tabName}`);
+      activeSection.classList.remove('hidden');
+      activeSection.classList.add('fade-in');
+      
+      document.getElementById('contact-popup').classList.add('hidden');
+    }
+
+    function toggleContact() {
+      const popup = document.getElementById('contact-popup');
+      popup.classList.toggle('hidden');
+    }
+
+    async function onConfigChange(newConfig) {
+      const brandName = document.getElementById('brand-name');
+      const tagline = document.getElementById('tagline');
+      const lineLink = document.getElementById('line-link');
+
+      if (brandName) {
+        brandName.textContent = newConfig.brand_name || defaultConfig.brand_name;
+      }
+      
+      if (tagline) {
+        tagline.textContent = newConfig.tagline || defaultConfig.tagline;
+      }
+
+      const lineUrl = newConfig.line_url || defaultConfig.line_url;
+      
+      if (lineLink) {
+        lineLink.href = lineUrl;
+      }
+
+      const fontFamily = newConfig.font_family || defaultConfig.font_family;
+      document.body.style.fontFamily = `${fontFamily}, 'Noto Serif TC', sans-serif`;
+
+      const fontSize = newConfig.font_size || defaultConfig.font_size;
+      document.body.style.fontSize = `${fontSize}px`;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              config.secondary_color = value;
+              window.elementSdk.setConfig({ secondary_color: value });
+            }
+          },
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              config.surface_color = value;
+              window.elementSdk.setConfig({ surface_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['brand_name', config.brand_name || defaultConfig.brand_name],
+        ['tagline', config.tagline || defaultConfig.tagline],
+        ['line_url', config.line_url || defaultConfig.line_url]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9beb04a5e7f4f1c8',t:'MTc2ODUzOTMwMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
